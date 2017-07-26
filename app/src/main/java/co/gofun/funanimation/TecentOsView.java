@@ -109,11 +109,10 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
         public void run() {
             while (true) {
                 synchronized (mSurfaceLock) {
-                    offsetX += 5;
-//                    offsetY++;
+                   /* offsetX += 5;
                     if (offsetX == 360) {
                         offsetX = 0;
-                    }
+                    }*/
 
                     if (!mIsRun) {
                         return;
@@ -140,17 +139,29 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
     private void doDraw(Canvas canvas) {
 
 //        drawSin(canvas);
-        drawLine(canvas);
+        drawSinLine(canvas);
+//        drawSinLine(canvas, true);
     }
 
-    private void drawLine(Canvas canvas) {
+    private void drawSinLine(Canvas canvas) {
+        drawSinLine(canvas, w, amplitude);
+    }
+
+
+
+    /**
+     * @param canvas
+     * @param w
+     * @param amplitude
+     */
+    private void drawSinLine(Canvas canvas, float w, float amplitude) {
         Log.i(TAG, "Start:" + System.currentTimeMillis() % 10000 + "ms");
         int x = 0, y = 500;
         canvas.drawColor(Color.WHITE);
-//        mPaint.setColor(Color.BLACK);
+        mPaint.setColor(Color.BLACK);
 //        mPaint.setColor(Color.YELLOW);
-        mPaint.setColor(Color.BLUE);
-//        mPaint.setStyle(Paint.Style.STROKE);
+//        mPaint.setColor(Color.BLUE);
+        mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(2);
         mPath.reset();
 
@@ -161,6 +172,7 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
         for (int i = 0; i < getWidth(); i++) {
             x = i;
             y = centerY - (int) (amplitude * Math.sin((i * w + offsetX) * Math.PI / 180) + offsetY);
+
             preX = x;
             preY = y;
             if (i == 0) {
