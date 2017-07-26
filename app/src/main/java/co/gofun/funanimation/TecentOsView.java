@@ -27,7 +27,7 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
      * 振幅
      * amplitude
      */
-    private int amplitude = 100;
+    private int amplitude = 20;
 
     /**
      * 角速度
@@ -147,9 +147,10 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
         Log.i(TAG, "Start:" + System.currentTimeMillis() % 10000 + "ms");
         int x = 0, y = 500;
         canvas.drawColor(Color.WHITE);
-        mPaint.setColor(Color.BLACK);
+//        mPaint.setColor(Color.BLACK);
 //        mPaint.setColor(Color.YELLOW);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setColor(Color.BLUE);
+//        mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(2);
         mPath.reset();
 
@@ -170,9 +171,9 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
             mPath.quadTo(preX, preY, x, y);
         }
 
-//        mPath.lineTo(getWidth(), getHeight());
-//        mPath.lineTo(0, getHeight());
-//        mPath.close();
+        mPath.lineTo(getWidth(), getHeight());
+        mPath.lineTo(0, getHeight());
+        mPath.close();
         canvas.drawPath(mPath, mPaint);
 
 
