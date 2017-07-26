@@ -183,9 +183,9 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
             mPath.quadTo(preX, preY, x, y);
         }
 
-        mPath.lineTo(getWidth(), getHeight());
-        mPath.lineTo(0, getHeight());
-        mPath.close();
+//        mPath.lineTo(getWidth(), getHeight());
+//        mPath.lineTo(0, getHeight());
+//        mPath.close();
         canvas.drawPath(mPath, mPaint);
 
 
