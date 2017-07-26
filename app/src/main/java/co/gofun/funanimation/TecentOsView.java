@@ -109,8 +109,8 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
         public void run() {
             while (true) {
                 synchronized (mSurfaceLock) {
-                   /* offsetX += 5;
-                    if (offsetX == 360) {
+                    offsetX += 5;
+                   /* if (offsetX == 360) {
                         offsetX = 0;
                     }*/
 
@@ -158,10 +158,10 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
         Log.i(TAG, "Start:" + System.currentTimeMillis() % 10000 + "ms");
         int x = 0, y = 500;
         canvas.drawColor(Color.WHITE);
-        mPaint.setColor(Color.BLACK);
+//        mPaint.setColor(Color.BLACK);
 //        mPaint.setColor(Color.YELLOW);
-//        mPaint.setColor(Color.BLUE);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setColor(Color.BLUE);
+//        mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(2);
         mPath.reset();
 
@@ -183,9 +183,9 @@ public class TecentOsView extends SurfaceView implements SurfaceHolder.Callback 
             mPath.quadTo(preX, preY, x, y);
         }
 
-//        mPath.lineTo(getWidth(), getHeight());
-//        mPath.lineTo(0, getHeight());
-//        mPath.close();
+        mPath.lineTo(getWidth(), getHeight());
+        mPath.lineTo(0, getHeight());
+        mPath.close();
         canvas.drawPath(mPath, mPaint);
 
 
